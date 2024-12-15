@@ -1,20 +1,19 @@
 package ma.emsi.chemlal;
 
-import dev.langchain4j.data.message.ChatMessage;
-import dev.langchain4j.data.message.UserMessage;
+
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.chat.request.ResponseFormat;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
+
 
 import java.time.Duration;
 
 @Slf4j
 public class Test1 {
 
-    
-    private static final String GEMINI_KEY = System.getenv("GEMINI_KEY"); ;
+
+   private static final String GEMINI_KEY = System.getenv("GEMINI_KEY");
 
     public static void main(String[] args) {
 
