@@ -32,11 +32,16 @@ public class TestRAG {
                 .build();
 
         // Chargement du document, sous la forme d'embeddings, dans une base vectorielle en mémoire
-        String nomDocument = "infos.txt";
-        Document document = FileSystemDocumentLoader.loadDocument(nomDocument);
+        //String nomDocument = "infos.txt";
+        String pdfPath = "ml.pdf";
+        Document pdfDocument = FileSystemDocumentLoader.loadDocument(pdfPath);
+
+        //Document document = FileSystemDocumentLoader.loadDocument(nomDocument);
         InMemoryEmbeddingStore embeddingStore = new InMemoryEmbeddingStore<>();
         // Calcule les embeddings et les enregistre dans la base vectorielle
-        EmbeddingStoreIngestor.ingest(document, embeddingStore);
+
+        //EmbeddingStoreIngestor.ingest(document, embeddingStore);
+        EmbeddingStoreIngestor.ingest(pdfDocument, embeddingStore);
 
         // Création de l'assistant conversationnel, avec une mémoire.
         // L'implémentation de Assistant est faite par LangChain4j.
@@ -49,13 +54,15 @@ public class TestRAG {
                         .build();
 
         // Le LLM va utiliser l'information du fichier infos.txt pour répondre à la question.
-        String question = "Comment s'appelle le chat de Pierre ?";
-        String question2 = "Quelle est la capitale de France ?";
+        //String question = "Comment s'appelle le chat de Pierre ?";
+        String question = "En s'inspirant du cours 'Machine Learning' de Richard Grin, donne moi un QCM de 5 questions?";
+        String question2 = "Quel est l'objectif du cours 'Machine Learning' de Richard Grin ?";
         // L'assistant analyse la question et recherche les informations pertinentes
         // pour la question dans la base vectorielle.
         // Ces informations pertinentes sont ajoutées à la question et le tout est envoyé au LLM.
         String reponse = assistant.chat(question);
         String reponse2 = assistant.chat(question2);
+
         // Affiche la réponse du LLM.
         System.out.println(reponse);
         System.out.println(reponse2);
