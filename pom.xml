@@ -48,6 +48,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-easy-rag</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+
 
     </dependencies>
 
